@@ -1,0 +1,15 @@
+/* app global css */
+.q-dialog__inner--minimized {
+  padding: .5rem;
+}
+
+.q-menu--dark {
+  letter-spacing: 1px;
+  border: 1px solid #ffffff47;
+  font-size: 14px;
+  box-shadow: none !important;
+}
+
+.text-decoration-none {
+  text-decoration: none;
+}
