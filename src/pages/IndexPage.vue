@@ -1,9 +1,9 @@
 <template>
   <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    >
+    <div class="text-center">
+      <q-icon size="6rem" name="build"/>
+      <div class="text-h5">Em construção</div>
+      <div class="text-h6">Painel de administração</div>
+    </div>
   </q-page>
 </template>

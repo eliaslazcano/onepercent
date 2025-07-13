@@ -1,11 +1,6 @@
-# Quasar Starter Kit
+# One Percent Gaming
 
-Elias Starter Kit
-
-### Clonar/Download
-```bash
-git clone https://github.com/eliaslazcano/quasar-starter-kit.git
-```
+Sistema para os consumidores e administradores
 
 ### Install the dependencies
 ```bash

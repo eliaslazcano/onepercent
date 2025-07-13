@@ -8,7 +8,7 @@
       <q-toolbar>
         <q-btn icon="menu" aria-label="Menu" @click="toggleLeftDrawer" flat dense round />
 
-        <q-toolbar-title>Quasar App</q-toolbar-title>
+        <q-toolbar-title>One Percent</q-toolbar-title>
 
         <q-btn flat rounded dense icon="more_vert">
           <q-menu>
@@ -49,8 +49,8 @@
             </q-avatar>
           </q-item-section>
           <q-item-section>
-            <q-item-label lines="1">Quasar App</q-item-label>
-            <q-item-label caption lines="1">Starter Kit</q-item-label>
+            <q-item-label lines="1">Elias Neto</q-item-label>
+            <q-item-label caption lines="1">Staff</q-item-label>
           </q-item-section>
         </q-item>
         <q-separator/>
@@ -94,46 +94,46 @@ const toggleLeftDrawer = () => leftDrawerOpen.value = !leftDrawerOpen.value
 
 const linksList = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    href: 'https://quasar.dev'
+    title: 'Campanhas',
+    caption: 'Cadastro de sorteios',
+    icon: 'emoji_events',
+    href: 'https://google.com'
   },
+  // {
+  //   title: 'Github',
+  //   caption: 'github.com/quasarframework',
+  //   icon: 'code',
+  //   href: 'https://google.com'
+  // },
+  // {
+  //   title: 'Discord Chat Channel',
+  //   caption: 'chat.quasar.dev',
+  //   icon: 'chat',
+  //   href: 'https://google.com'
+  // },
+  // {
+  //   title: 'Forum',
+  //   caption: 'forum.quasar.dev',
+  //   icon: 'record_voice_over',
+  //   href: 'https://google.com'
+  // },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    href: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    href: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    href: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
+    title: 'Comunicados',
+    caption: 'Disparar mensagens aos clientes',
     icon: 'rss_feed',
-    href: 'https://twitter.quasar.dev'
+    href: 'https://google.com'
   },
   {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
+    title: 'Site',
+    caption: 'Administrar conteúdo publicado',
     icon: 'public',
-    href: 'https://facebook.quasar.dev'
+    href: 'https://google.com'
   },
   {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    href: 'https://awesome.quasar.dev'
+    title: 'Relatórios',
+    caption: 'Resumo geral de vendas',
+    icon: 'assessment',
+    href: 'https://google.com'
   }
 ]
 </script>

@@ -19,7 +19,7 @@ import Package from '../../package.json'
 
     <q-footer bordered :class="{'bg-dark':$q.dark.isActive}" class="q-pa-xs">
       <div class="flex justify-between text-caption">
-        <div>&copy; Elias Lazcano</div>
+        <div>&copy; One Percent Gaming</div>
         <div>v{{ Package.version }}</div>
       </div>
     </q-footer>

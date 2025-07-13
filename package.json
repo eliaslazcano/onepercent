@@ -1,12 +1,16 @@
 {
-  "name": "@eliaslazcano/quasarapp",
+  "name": "@eliaslazcano/onepercent",
   "version": "1.0.0",
-  "description": "Starter kit para projetos Quasar com login, rotas, store e Axios.",
-  "productName": "Quasar App",
+  "description": "One Percent Gaming.",
+  "productName": "One Percent Gaming",
   "author": "Elias Lazcano Castro Neto <elias304162@gmail.com>",
   "type": "module",
-  "private": false,
-  "keywords": ["quasar","starter","vue3"],
+  "private": true,
+  "keywords": [
+    "quasar",
+    "starter",
+    "vue3"
+  ],
   "license": "MIT",
   "scripts": {
     "lint": "eslint -c ./eslint.config.js \"./src*/**/*.{js,cjs,mjs,vue}\"",
