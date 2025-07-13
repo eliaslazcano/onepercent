@@ -3,6 +3,7 @@ import { ref, reactive } from 'vue'
 import { useSessionStore } from 'stores/session.js'
 import { useRouter, useRoute } from 'vue-router'
 import { useQuasar } from 'quasar'
+import RegisterAccount from 'components/forms/RegisterAccount.vue'
 //import { api } from 'boot/axios'
 
 const sessionStore = useSessionStore()
@@ -20,7 +21,7 @@ const loginFormSubmit = async () => {
     //sessionStore.login(data.token)
 
     const fakeToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRWxpYXMgTGF6Y2FubyIsImV4cCI6MTk3MzIzNTAxOX0.Y4jcPBwP9_NWKHcoHqW8DgyXwJmemhbh67GAsrWpe3Q'
-    await new Promise(resolve => setTimeout(resolve, 5000))
+    await new Promise(resolve => setTimeout(resolve, 2000))
     sessionStore.login(fakeToken)
 
     await router.replace(route.query.redirect ? route.query.redirect : { name: 'home' })
@@ -28,17 +29,20 @@ const loginFormSubmit = async () => {
     loginFormProcessando.value = false
   }
 }
+
+const registerDialog = ref(false)
+const registerLoading = ref(false)
 </script>
 
 <template>
   <q-page padding class="content-center">
-    <div style="width: 100%; max-width: 22rem" class="q-mx-auto">
+    <div style="width: 100%; max-width: 20rem" class="q-mx-auto">
       <q-card :flat="$q.dark.isActive" :bordered="$q.dark.isActive">
         <q-card-section>
           <div class="text-center q-pb-sm">
-            <img alt="Logo" src="~assets/logo.png" style="width: 4rem" />
-            <div class="text-h6 q-mb-none">Quasar</div>
-            <div class="text-subtitle1 q-mb-sm">Starter Kit</div>
+            <q-icon size="4rem" name="sports_esports"/>
+            <div class="text-h6 q-mb-none">One Percent Gaming</div>
+            <div class="text-subtitle1 q-mb-sm">Área Restrita</div>
           </div>
           <q-form
             @submit.prevent="loginFormSubmit"
@@ -49,6 +53,7 @@ const loginFormSubmit = async () => {
             <q-input
               label="Email"
               autocomplete="username"
+              type="email"
               v-model="loginFormIpt.usuario"
               :disable="loginFormProcessando"
               :rules="[v => (!!v && !!v.trim()) || 'Insira seu email']"
@@ -80,9 +85,21 @@ const loginFormSubmit = async () => {
               :loading="loginFormProcessando"
               unelevated rounded
             />
+            <div class="text-center">
+              <q-btn
+                label="Primeiro Acesso"
+                color="primary"
+                @click="registerDialog = true"
+                flat
+              ></q-btn>
+            </div>
           </q-form>
         </q-card-section>
       </q-card>
     </div>
+
+    <q-dialog v-model="registerDialog" :persistent="registerLoading">
+      <RegisterAccount style="width: 22rem" v-model:loading="registerLoading" />
+    </q-dialog>
   </q-page>
 </template>
