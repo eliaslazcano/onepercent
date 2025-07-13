@@ -17,9 +17,9 @@ const formPasswordRules = [
   v => v.length >= 6 || 'A senha deve ter pelo menos 6 caracteres',
 ]
 const formShowPassword = ref(false)
-const formLoading = defineModel('loading')
+const formLoading = defineModel('loading', {type: Boolean, default: false})
 const formSubmit = async () => {
-  if (formValues.password !== formValues.password2) $q.notify({type: 'negative', message: 'A repetição da senha está incorreta.'})
+  if (formValues.password !== formValues.password2) return $q.notify({type: 'negative', message: 'A repetição da senha está incorreta.'})
   emit('submit', formValues.email, formValues.password)
 }
 </script>
