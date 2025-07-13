@@ -1,0 +1,14 @@
+AcceptPathInfo On
+RewriteEngine On
+Options -Indexes
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+
+RewriteCond %{REQUEST_URI} \.(json|env|sql|git|exe|sh|zip)$ [NC]
+RewriteRule ^(.*)$ - [R=403,L]
+ErrorDocument 403 /error403.html
