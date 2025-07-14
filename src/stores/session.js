@@ -10,7 +10,7 @@ export const useSessionStore = defineStore('session', {
     isLoggedIn: state => !!state?.token,
     isTokenExpired: state => {
       const exp = state?.payload?.exp
-      if (!exp) return true
+      if (!exp) return false
       return Math.floor(Date.now() / 1000) >= exp
     },
   },

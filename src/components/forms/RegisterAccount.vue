@@ -6,11 +6,12 @@ import { validarEmail } from '@eliaslazcano/utils'
 const $q = useQuasar()
 
 const emit = defineEmits(['submit'])
-const formValues = reactive({email: '', password: '', password2: ''})
+const formValues = reactive({email: '', name: '', password: '', password2: ''})
 const formEmailRules = [
   v => (!!v && !!v.trim()) || 'Insira seu email',
   v => validarEmail(v) || 'Digite um email válido'
 ]
+const formNameRules = [v => !!v && !!v.trim() || 'Insira seu nome']
 const formPasswordRules = [
   v => (!!v && !!v.trim()) || 'Insira sua nova senha',
   v => !/\s/.test(v) || 'A senha não deve conter espaços',
@@ -20,7 +21,7 @@ const formShowPassword = ref(false)
 const formLoading = defineModel('loading', {type: Boolean, default: false})
 const formSubmit = async () => {
   if (formValues.password !== formValues.password2) return $q.notify({type: 'negative', message: 'A repetição da senha está incorreta.'})
-  emit('submit', formValues.email, formValues.password)
+  emit('submit', formValues.email, formValues.name, formValues.password)
 }
 </script>
 
@@ -38,6 +39,14 @@ const formSubmit = async () => {
           v-model="formValues.email"
           :disable="formLoading"
           :rules="formEmailRules"
+          lazy-rules filled
+        />
+        <q-input
+          label="Nome"
+          autocomplete="name"
+          v-model="formValues.name"
+          :disable="formLoading"
+          :rules="formNameRules"
           lazy-rules filled
         />
         <q-input

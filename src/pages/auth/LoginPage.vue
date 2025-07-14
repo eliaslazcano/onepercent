@@ -4,48 +4,37 @@ import { useSessionStore } from 'stores/session.js'
 import { useRouter, useRoute } from 'vue-router'
 import { useQuasar } from 'quasar'
 import RegisterAccount from 'components/forms/RegisterAccount.vue'
-//import { api } from 'boot/axios'
-
-//TODO - Deletar este token, usado como exemplo apenas
-const fakeToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRWxpYXMgTGF6Y2FubyIsImV4cCI6MTk3MzIzNTAxOX0.Y4jcPBwP9_NWKHcoHqW8DgyXwJmemhbh67GAsrWpe3Q'
+import { api } from 'boot/axios'
 
 const sessionStore = useSessionStore()
 const router = useRouter()
 const route = useRoute()
 const $q = useQuasar()
 
-const loginFormIpt = reactive({ usuario: '', password: '' })
+const loginFormIpt = reactive({ email: '', password: '' })
 const loginFormMostrarSenha = ref(false)
 const loginFormProcessando = ref(false)
 const loginFormSubmit = async () => {
   try {
     loginFormProcessando.value = true
-    //const { data } = await api.post('/auth/login', loginFormIpt)
-    //sessionStore.login(data.token)
-
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    sessionStore.login(fakeToken)
-
+    const { data } = await api.post('/auth/login', loginFormIpt)
+    sessionStore.login(data.token)
     await router.replace(route.query.redirect ? route.query.redirect : { name: 'home' })
-  } finally {
+  } catch {
     loginFormProcessando.value = false
   }
 }
 
 const registerDialog = ref(false)
 const registerLoading = ref(false)
-const registerSubmit = async (email, password) => {
+const registerSubmit = async (email, name, password) => {
   try {
     registerLoading.value = true
-    //const { data } = await api.post('/auth/register', {email, password})
-    //sessionStore.login(data.token)
-
-    console.log('registerSubmit', email, password)
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    sessionStore.login(fakeToken)
-
+    const { data } = await api.post('/auth/register', {email, name, password})
+    sessionStore.login(data.token)
     await router.replace(route.query.redirect ? route.query.redirect : { name: 'home' })
-  } finally {
+    $q.notify({ type: 'positive', message: 'Bem-vindo a One Percent!' })
+  } catch {
     registerLoading.value = false
   }
 }
@@ -71,7 +60,7 @@ const registerSubmit = async (email, password) => {
               label="Email"
               autocomplete="username"
               type="email"
-              v-model="loginFormIpt.usuario"
+              v-model="loginFormIpt.email"
               :disable="loginFormProcessando"
               :rules="[v => (!!v && !!v.trim()) || 'Insira seu email']"
               lazy-rules filled
